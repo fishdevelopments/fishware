@@ -1,6 +1,7 @@
 package de.fishdevelopments.fishware.features.module
 
 import de.fishdevelopments.fishware.Fishware.Companion.INSTANCE
+import de.fishdevelopments.fishware.system.setting.Setting
 import me.zero.alpine.listener.Subscriber
 
 abstract class Module
@@ -19,6 +20,8 @@ protected constructor(val category: ModuleCategory, val name: String, val descri
     }
 
   var key: Int = 0
+
+  val settings: MutableList<Setting<*>> = mutableListOf()
 
   fun toggle() {
     this.enabled = !this.enabled
