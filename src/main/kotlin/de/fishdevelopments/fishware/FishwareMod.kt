@@ -1,8 +1,8 @@
-package net.fabricmc.example
+package de.fishdevelopments.fishware
 
 import net.fabricmc.api.ModInitializer
 
-class ExampleMod : ModInitializer {
+class FishwareMod : ModInitializer {
 
     override fun onInitialize() {
         //TODO - "Not yet implemented"
