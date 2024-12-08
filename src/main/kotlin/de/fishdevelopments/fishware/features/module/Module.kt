@@ -7,7 +7,7 @@ import me.zero.alpine.listener.Subscriber
 abstract class Module
 protected constructor(val category: ModuleCategory, val name: String, val description: String) :
   Subscriber {
-  var enabled: Boolean = false
+  var enabled = false
     set(value) {
       if (value != field) {
         field = value
@@ -19,7 +19,7 @@ protected constructor(val category: ModuleCategory, val name: String, val descri
       }
     }
 
-  var key: Int = 0
+  var key = 0
 
   val settings: MutableList<Setting<*>> = mutableListOf()
 
