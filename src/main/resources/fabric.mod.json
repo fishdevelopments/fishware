@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "fishware",
-  "version": "${version}",
+  "version": "1.0",
 
   "name": "Fishware",
   "description": "blob!",
