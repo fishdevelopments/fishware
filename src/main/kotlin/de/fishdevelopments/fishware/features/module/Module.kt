@@ -20,6 +20,10 @@ protected constructor(val category: ModuleCategory, val name: String, val descri
 
   var key: Int = 0
 
+  fun toggle() {
+    this.enabled = !this.enabled
+  }
+
   open fun onEnable() {
     INSTANCE.eventBus.subscribe(this)
   }

@@ -22,7 +22,7 @@ abstract class ClassInstanceManager<T : Any> {
     return this.instances[clazz] as U?
   }
 
-  fun getInstances(): Collection<T> {
+  fun getValues(): Collection<T> {
     return this.instances.values
   }
 }
