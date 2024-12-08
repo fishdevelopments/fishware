@@ -1,7 +1,14 @@
 package de.fishdevelopments.fishware
 
+import me.zero.alpine.bus.EventBus
+import me.zero.alpine.bus.EventManager
+
 class Fishware {
-  fun init() {}
+  private lateinit var eventBus: EventBus
+
+  fun init() {
+    this.eventBus = EventManager.builder().setName("fishware/root").setSuperListeners().build()
+  }
 
   fun shutdown() {}
 
