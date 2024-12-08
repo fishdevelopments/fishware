@@ -12,6 +12,7 @@ import de.fishdevelopments.fishware.util.imgui.ImGuiImpl
 import imgui.ImGui
 import imgui.flag.ImGuiCol
 import imgui.flag.ImGuiDir
+import imgui.flag.ImGuiSelectableFlags
 import imgui.flag.ImGuiWindowFlags
 import java.awt.Color
 import net.minecraft.client.gui.DrawContext
@@ -355,13 +356,33 @@ class GUIScreen : Screen(Text.literal("GUIScreen")) {
                             (color[3] * 255).toInt(),
                           )
                       }
-                    } else if (setting is EnumSetting) {
-                      if (ImGui.beginCombo(setting.name, setting.value.toString())) {
+                    } else if (setting is EnumSetting<*>) {
+                      if (
+                        ImGui.beginCombo(
+                          setting.name,
+                          setting.value.joinToString(", ") { it.toString() },
+                        )
+                      ) {
                         for (enumConstant in setting.enumClass.enumConstants) {
+                          val selected = setting.value.contains(enumConstant)
                           if (
-                            ImGui.selectable(enumConstant.toString(), enumConstant == setting.value)
+                            ImGui.selectable(
+                              enumConstant.toString(),
+                              selected,
+                              ImGuiSelectableFlags.DontClosePopups,
+                            )
                           ) {
-                            setting.setValueAsAny(enumConstant!!)
+                            if (setting.multiple) {
+                              val newValue = setting.value.toMutableSet()
+                              if (selected) {
+                                newValue.remove(enumConstant)
+                              } else {
+                                newValue.add(enumConstant)
+                              }
+                              setting.setValueAsAny(newValue)
+                            } else {
+                              setting.setValueAsAny(setOf(enumConstant))
+                            }
                           }
                         }
                         ImGui.endCombo()
