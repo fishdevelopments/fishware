@@ -2,7 +2,7 @@ package de.fishdevelopments.fishware.system.setting
 
 import java.util.function.BooleanSupplier
 
-class Setting<T>
+abstract class Setting<T>
 @JvmOverloads
 internal constructor(
     val name: String,
