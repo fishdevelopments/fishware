@@ -5,4 +5,3 @@ fishware is a minecraft fabric utility/cheat mod, which is primarily intended fo
 
 #### Notes:
 - The mod is initialized by a MinecraftClient mixin, and **not** by Fabric's ModInitializer
-- Mixins are written in **Kotlin**

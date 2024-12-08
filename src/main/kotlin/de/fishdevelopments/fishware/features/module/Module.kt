@@ -6,7 +6,7 @@ import me.zero.alpine.listener.Subscriber
 
 abstract class Module
 protected constructor(val category: ModuleCategory, val name: String, val description: String) :
-    Subscriber {
+  Subscriber {
   var enabled: Boolean = false
     set(value) {
       if (value != field) {

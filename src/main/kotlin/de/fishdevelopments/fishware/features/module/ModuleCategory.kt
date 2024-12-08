@@ -6,5 +6,5 @@ enum class ModuleCategory(val displayName: String) {
   PLAYER("Player"),
   EXPLOIT("Exploit"),
   VISUAL("Visual"),
-  FUN("Fun")
+  FUN("Fun"),
 }

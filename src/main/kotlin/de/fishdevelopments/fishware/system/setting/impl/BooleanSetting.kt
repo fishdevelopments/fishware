@@ -5,9 +5,9 @@ import java.util.function.BooleanSupplier
 
 class BooleanSetting : Setting<Boolean> {
   constructor(
-      name: String,
-      value: Boolean,
-      visibleIf: BooleanSupplier
+    name: String,
+    value: Boolean,
+    visibleIf: BooleanSupplier,
   ) : super(name, value, visibleIf)
 
   constructor(name: String, value: Boolean) : super(name, value)

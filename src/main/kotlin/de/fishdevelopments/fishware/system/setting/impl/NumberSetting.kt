@@ -8,11 +8,11 @@ class NumberSetting<T : Number> : Setting<T> {
   val maxValue: T
 
   constructor(
-      name: String,
-      value: T,
-      visibleIf: BooleanSupplier,
-      minValue: T,
-      maxValue: T
+    name: String,
+    value: T,
+    visibleIf: BooleanSupplier,
+    minValue: T,
+    maxValue: T,
   ) : super(name, value, visibleIf) {
     this.minValue = minValue
     this.maxValue = maxValue

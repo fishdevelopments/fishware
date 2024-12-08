@@ -6,9 +6,9 @@ import java.util.function.BooleanSupplier
 
 class ColorSetting : Setting<Color> {
   constructor(
-      name: String,
-      value: Color,
-      visibleIf: BooleanSupplier
+    name: String,
+    value: Color,
+    visibleIf: BooleanSupplier,
   ) : super(name, value, visibleIf)
 
   constructor(name: String, value: Color) : super(name, value)
