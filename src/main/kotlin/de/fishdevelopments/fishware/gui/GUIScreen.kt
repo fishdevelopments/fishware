@@ -421,4 +421,8 @@ class GUIScreen : Screen(Text.literal("GUIScreen")) {
       ImGui.end()
     }
   }
+
+  override fun shouldPause(): Boolean {
+    return false
+  }
 }
