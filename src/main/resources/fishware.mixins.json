@@ -4,6 +4,7 @@
   "package": "de.fishdevelopments.fishware.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "TridentItemMixin"
   ],
   "client": [
     "KeyboardMixin",
