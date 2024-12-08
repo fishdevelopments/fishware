@@ -17,9 +17,13 @@ abstract class ClassInstanceManager<T : Any> {
     this.instances[clazz] = instance
   }
 
-  fun <U : T> get(clazz: Class<U>): U? {
+  fun <U : T> get(clazz: Class<U>): U {
     @Suppress("UNCHECKED_CAST")
-    return this.instances[clazz] as U?
+    return this.instances[clazz] as U
+  }
+
+  fun getBy(predicate: (T) -> Boolean): List<T> {
+    return this.instances.values.filter(predicate)
   }
 
   fun getValues(): Collection<T> {

@@ -23,7 +23,7 @@ class KeyboardMixin {
   ) {
     for (module in
         Objects.requireNonNull(INSTANCE.managerManager.get(ModuleManager::class.java))
-            ?.getValues()!!) {
+            .getValues()) {
       if (action == GLFW.GLFW_PRESS) {
         if (module.key == key) {
           module.toggle()

@@ -7,11 +7,6 @@ import de.fishdevelopments.fishware.features.module.ModuleCategory
 import me.zero.alpine.listener.Subscribe
 
 class SprintModule : Module(ModuleCategory.MOVEMENT, "Sprint", "Automatically sprints.") {
-
-  init {
-    this.enabled = true
-  }
-
   @Subscribe
   fun onTickEvent(tickEvent: TickEvent) {
     if (tickEvent.state == TickEvent.State.PRE) {
