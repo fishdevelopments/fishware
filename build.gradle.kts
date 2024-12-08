@@ -25,6 +25,13 @@ dependencies {
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api_version")}")
 
     implementation("com.github.ZeroMemes:Alpine:3.1.0")
+
+    implementation("io.github.spair:imgui-java-binding:1.86.12")
+    implementation("io.github.spair:imgui-java-lwjgl3:1.86.12")
+
+    implementation("io.github.spair:imgui-java-natives-windows:1.86.12")
+    implementation("io.github.spair:imgui-java-natives-linux:1.86.12")
+    implementation("io.github.spair:imgui-java-natives-macos:1.86.12")
 }
 
 tasks {
