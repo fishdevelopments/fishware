@@ -13,4 +13,8 @@ internal constructor(
     @Suppress("UNCHECKED_CAST")
     this.value = value as T
   }
+
+  fun isVisible(): Boolean {
+    return this.visibleIf.asBoolean
+  }
 }

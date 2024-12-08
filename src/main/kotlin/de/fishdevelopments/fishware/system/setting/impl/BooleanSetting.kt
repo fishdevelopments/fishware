@@ -11,4 +11,8 @@ class BooleanSetting : Setting<Boolean> {
   ) : super(name, value, visibleIf)
 
   constructor(name: String, value: Boolean) : super(name, value)
+
+  fun toggle() {
+    this.value = !this.value
+  }
 }

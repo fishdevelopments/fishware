@@ -4,11 +4,16 @@ import de.fishdevelopments.fishware.Fishware
 import de.fishdevelopments.fishware.features.module.ModuleCategory
 import de.fishdevelopments.fishware.features.module.impl.visual.GUIModule
 import de.fishdevelopments.fishware.system.manager.impl.ModuleManager
+import de.fishdevelopments.fishware.system.setting.impl.BooleanSetting
+import de.fishdevelopments.fishware.system.setting.impl.ColorSetting
+import de.fishdevelopments.fishware.system.setting.impl.EnumSetting
+import de.fishdevelopments.fishware.system.setting.impl.NumberSetting
 import de.fishdevelopments.fishware.util.imgui.ImGuiImpl
 import imgui.ImGui
 import imgui.flag.ImGuiCol
 import imgui.flag.ImGuiDir
 import imgui.flag.ImGuiWindowFlags
+import java.awt.Color
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.text.Text
@@ -252,6 +257,7 @@ class GUIScreen : Screen(Text.literal("GUIScreen")) {
               if (ImGui.collapsingHeader(module.name)) {
                 ImGui.text(module.description)
 
+                ImGui.pushID(module.name)
                 if (module !=
                     Fishware.INSTANCE.managerManager
                         .get(ModuleManager::class.java)
@@ -259,7 +265,77 @@ class GUIScreen : Screen(Text.literal("GUIScreen")) {
                   if (ImGui.checkbox("Enabled", module.enabled)) {
                     module.toggle()
                   }
+
+                  for (setting in module.settings) {
+                    if (!setting.isVisible()) {
+                      continue
+                    }
+
+                    if (setting is BooleanSetting) {
+                      if (ImGui.checkbox(setting.name, setting.value)) {
+                        setting.toggle()
+                      }
+                    } else if (setting is ColorSetting) {
+                      val value = setting.value
+                      val color =
+                          floatArrayOf(
+                              value.red / 255f,
+                              value.green / 255f,
+                              value.blue / 255f,
+                              value.alpha / 255f)
+                      if (ImGui.colorEdit4(setting.name, color)) {
+                        setting.value =
+                            Color(
+                                (color[0] * 255).toInt(),
+                                (color[1] * 255).toInt(),
+                                (color[2] * 255).toInt(),
+                                (color[3] * 255).toInt())
+                      }
+                    } else if (setting is EnumSetting) {
+                      if (ImGui.beginCombo(setting.name, setting.value.toString())) {
+                        for (enumConstant in setting.enumClass.enumConstants) {
+                          if (ImGui.selectable(
+                              enumConstant.toString(), enumConstant == setting.value)) {
+                            setting.setValueAsAny(enumConstant!!)
+                          }
+                        }
+                        ImGui.endCombo()
+                      }
+                    } else if (setting is NumberSetting) {
+                      if (setting.value is Float) {
+                        val value = floatArrayOf(setting.value as Float)
+                        if (ImGui.sliderFloat(
+                            setting.name,
+                            value,
+                            setting.minValue as Float,
+                            setting.maxValue as Float)) {
+                          setting.setValueAsAny(value[0])
+                        }
+                      }
+                      // no ImGui.sliderDouble
+                      else if (setting.value is Double) {
+                        val value = floatArrayOf((setting.value as Double).toFloat())
+                        if (ImGui.sliderFloat(
+                            setting.name,
+                            value,
+                            (setting.minValue as Double).toFloat(),
+                            (setting.maxValue as Double).toFloat())) {
+                          setting.setValueAsAny(value[0].toDouble())
+                        }
+                      } else {
+                        val value = intArrayOf(setting.value as Int)
+                        if (ImGui.sliderInt(
+                            setting.name,
+                            value,
+                            setting.minValue as Int,
+                            setting.maxValue as Int)) {
+                          setting.setValueAsAny(value[0])
+                        }
+                      }
+                    }
+                  }
                 }
+                ImGui.popID()
               }
             }
             ImGui.endTabItem()
