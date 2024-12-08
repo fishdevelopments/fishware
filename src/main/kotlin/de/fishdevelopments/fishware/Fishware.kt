@@ -3,6 +3,7 @@ package de.fishdevelopments.fishware
 import de.fishdevelopments.fishware.system.manager.impl.ManagerManager
 import me.zero.alpine.bus.EventBus
 import me.zero.alpine.bus.EventManager
+import net.minecraft.client.MinecraftClient
 
 class Fishware {
   lateinit var eventBus: EventBus
@@ -18,6 +19,7 @@ class Fishware {
 
   companion object {
     val INSTANCE: Fishware = Fishware()
+    val MC: MinecraftClient = MinecraftClient.getInstance()
     const val NAME = "fishware"
   }
 }

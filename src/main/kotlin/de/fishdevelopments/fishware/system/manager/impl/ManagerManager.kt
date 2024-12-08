@@ -6,5 +6,9 @@ class ManagerManager : ClassInstanceManager<ClassInstanceManager<*>>() {
 
   override fun run() {
     this.register(ModuleManager::class.java)
+
+    for (manager in this.getInstances()) {
+      manager.run()
+    }
   }
 }
