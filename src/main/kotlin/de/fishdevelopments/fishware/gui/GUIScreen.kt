@@ -4,10 +4,7 @@ import de.fishdevelopments.fishware.Fishware
 import de.fishdevelopments.fishware.features.module.ModuleCategory
 import de.fishdevelopments.fishware.features.module.impl.visual.GUIModule
 import de.fishdevelopments.fishware.system.manager.impl.ModuleManager
-import de.fishdevelopments.fishware.system.setting.impl.BooleanSetting
-import de.fishdevelopments.fishware.system.setting.impl.ColorSetting
-import de.fishdevelopments.fishware.system.setting.impl.EnumSetting
-import de.fishdevelopments.fishware.system.setting.impl.NumberSetting
+import de.fishdevelopments.fishware.system.setting.impl.*
 import de.fishdevelopments.fishware.util.imgui.ImGuiImpl
 import imgui.ImGui
 import imgui.flag.ImGuiCol
@@ -357,6 +354,17 @@ class GUIScreen : Screen(Text.literal("GUIScreen")) {
                           )
                       }
                     } else if (setting is EnumSetting<*>) {
+                      if (ImGui.beginCombo(setting.name, setting.value.toString())) {
+                        for (enumConstant in setting.enumClass.enumConstants) {
+                          if (
+                            ImGui.selectable(enumConstant.toString(), setting.value == enumConstant)
+                          ) {
+                            setting.setValueAsAny(enumConstant)
+                          }
+                        }
+                        ImGui.endCombo()
+                      }
+                    } else if (setting is MultipleEnumSetting<*>) {
                       if (
                         ImGui.beginCombo(
                           setting.name,
@@ -372,17 +380,13 @@ class GUIScreen : Screen(Text.literal("GUIScreen")) {
                               ImGuiSelectableFlags.DontClosePopups,
                             )
                           ) {
-                            if (setting.multiple) {
-                              val newValue = setting.value.toMutableSet()
-                              if (selected) {
-                                newValue.remove(enumConstant)
-                              } else {
-                                newValue.add(enumConstant)
-                              }
-                              setting.setValueAsAny(newValue)
+                            val newValue = setting.value.toMutableSet()
+                            if (selected) {
+                              newValue.remove(enumConstant)
                             } else {
-                              setting.setValueAsAny(setOf(enumConstant))
+                              newValue.add(enumConstant)
                             }
+                            setting.setValueAsAny(newValue)
                           }
                         }
                         ImGui.endCombo()

@@ -3,6 +3,7 @@ package de.fishdevelopments.fishware.system.manager.impl
 import de.fishdevelopments.fishware.features.module.Module
 import de.fishdevelopments.fishware.features.module.impl.exploit.TridentBoostModule
 import de.fishdevelopments.fishware.features.module.impl.movement.SprintModule
+import de.fishdevelopments.fishware.features.module.impl.visual.ESPModule
 import de.fishdevelopments.fishware.features.module.impl.visual.GUIModule
 import de.fishdevelopments.fishware.features.module.impl.visual.OldSwingModule
 import de.fishdevelopments.fishware.system.manager.ClassInstanceManager
@@ -22,6 +23,7 @@ class ModuleManager : ClassInstanceManager<Module>() {
     // player
 
     // visual
+    this.register(ESPModule::class.java)
     this.register(GUIModule::class.java)
     this.register(OldSwingModule::class.java)
   }

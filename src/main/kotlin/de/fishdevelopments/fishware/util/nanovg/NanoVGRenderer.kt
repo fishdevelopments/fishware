@@ -4,7 +4,33 @@ import de.fishdevelopments.fishware.Fishware.Companion.MC
 import org.lwjgl.opengl.GL11C
 import org.nvgu.NVGU
 
-class NanoVGRenderer {
+object NanoVGRenderer {
+  val NVGU: NVGU =
+    NVGU()
+      .create()
+      .createFont(
+        Font.UBUNTUMONO_BOLD.identifier,
+        NanoVGRenderer.javaClass.getResourceAsStream("/assets/fishware/fonts/UbuntuMono-Bold.ttf"),
+      )
+      .createFont(
+        Font.UBUNTUMONO_REGULAR.identifier,
+        NanoVGRenderer.javaClass.getResourceAsStream(
+          "/assets/fishware/fonts/UbuntuMono-Regular.ttf"
+        ),
+      )
+      .createFont(
+        Font.PROGGYCLEAN.identifier,
+        NanoVGRenderer.javaClass.getResourceAsStream("/assets/fishware/fonts/ProggyClean.ttf"),
+      )
+      .createFont(
+        Font.VOLTE_BOLD.identifier,
+        NanoVGRenderer.javaClass.getResourceAsStream("/assets/fishware/fonts/Volte-Bold.ttf"),
+      )
+      .createFont(
+        Font.VOLTE_MEDIUM.identifier,
+        NanoVGRenderer.javaClass.getResourceAsStream("/assets/fishware/fonts/Volte-Medium.ttf"),
+      )
+
   fun render(runnable: Runnable) {
     NVGU.beginFrame(MC.window.width, MC.window.height)
     runnable.run()
@@ -21,9 +47,5 @@ class NanoVGRenderer {
     GL11C.glStencilMask(-0x1)
     GL11C.glStencilOp(GL11C.GL_KEEP, GL11C.GL_KEEP, GL11C.GL_KEEP)
     GL11C.glStencilFunc(GL11C.GL_ALWAYS, 0, -0x1)
-  }
-
-  companion object {
-    val NVGU: NVGU = NVGU().create()
   }
 }
