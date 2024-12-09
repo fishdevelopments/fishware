@@ -1,6 +1,6 @@
-package de.fishdevelopments.fishware.system.setting.impl
+package de.fishdevelopments.fishware.setting.impl
 
-import de.fishdevelopments.fishware.system.setting.Setting
+import de.fishdevelopments.fishware.setting.Setting
 import java.util.function.BooleanSupplier
 
 class MultipleEnumSetting<T : Enum<T>> : Setting<Set<T>> {

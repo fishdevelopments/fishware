@@ -1,4 +1,4 @@
-package de.fishdevelopments.fishware.system.setting
+package de.fishdevelopments.fishware.setting
 
 import java.util.function.BooleanSupplier
 

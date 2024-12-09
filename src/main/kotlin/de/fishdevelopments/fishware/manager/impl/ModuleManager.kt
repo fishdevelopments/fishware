@@ -1,4 +1,4 @@
-package de.fishdevelopments.fishware.system.manager.impl
+package de.fishdevelopments.fishware.manager.impl
 
 import de.fishdevelopments.fishware.features.module.Module
 import de.fishdevelopments.fishware.features.module.impl.exploit.TridentBoostModule
@@ -6,7 +6,7 @@ import de.fishdevelopments.fishware.features.module.impl.movement.SprintModule
 import de.fishdevelopments.fishware.features.module.impl.visual.ESPModule
 import de.fishdevelopments.fishware.features.module.impl.visual.GUIModule
 import de.fishdevelopments.fishware.features.module.impl.visual.OldSwingModule
-import de.fishdevelopments.fishware.system.manager.ClassInstanceManager
+import de.fishdevelopments.fishware.manager.ClassInstanceManager
 
 class ModuleManager : ClassInstanceManager<Module>() {
 

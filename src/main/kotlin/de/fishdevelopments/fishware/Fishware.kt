@@ -1,7 +1,7 @@
 package de.fishdevelopments.fishware
 
 import de.fishdevelopments.fishware.gui.GUIScreen
-import de.fishdevelopments.fishware.system.manager.impl.ManagerManager
+import de.fishdevelopments.fishware.manager.impl.ManagerManager
 import de.fishdevelopments.fishware.util.imgui.ImGuiImpl
 import me.zero.alpine.bus.EventBus
 import me.zero.alpine.bus.EventManager

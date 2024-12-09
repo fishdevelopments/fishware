@@ -1,6 +1,6 @@
-package de.fishdevelopments.fishware.system.manager.impl
+package de.fishdevelopments.fishware.manager.impl
 
-import de.fishdevelopments.fishware.system.manager.ClassInstanceManager
+import de.fishdevelopments.fishware.manager.ClassInstanceManager
 
 class ManagerManager : ClassInstanceManager<ClassInstanceManager<*>>() {
 

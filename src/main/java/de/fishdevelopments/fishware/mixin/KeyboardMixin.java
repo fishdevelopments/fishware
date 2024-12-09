@@ -2,7 +2,7 @@ package de.fishdevelopments.fishware.mixin;
 
 import de.fishdevelopments.fishware.Fishware;
 import de.fishdevelopments.fishware.features.module.Module;
-import de.fishdevelopments.fishware.system.manager.impl.ModuleManager;
+import de.fishdevelopments.fishware.manager.impl.ModuleManager;
 import net.minecraft.client.Keyboard;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Mixin;

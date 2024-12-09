@@ -1,4 +1,4 @@
-package de.fishdevelopments.fishware.util
+package de.fishdevelopments.fishware.util.render
 
 import de.fishdevelopments.fishware.Fishware.Companion.MC
 import net.minecraft.util.math.Vec3d

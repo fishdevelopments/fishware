@@ -3,8 +3,8 @@ package de.fishdevelopments.fishware.gui
 import de.fishdevelopments.fishware.Fishware
 import de.fishdevelopments.fishware.features.module.ModuleCategory
 import de.fishdevelopments.fishware.features.module.impl.visual.GUIModule
-import de.fishdevelopments.fishware.system.manager.impl.ModuleManager
-import de.fishdevelopments.fishware.system.setting.impl.*
+import de.fishdevelopments.fishware.manager.impl.ModuleManager
+import de.fishdevelopments.fishware.setting.impl.*
 import de.fishdevelopments.fishware.util.imgui.ImGuiImpl
 import imgui.ImGui
 import imgui.flag.ImGuiCol

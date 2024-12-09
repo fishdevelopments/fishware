@@ -1,4 +1,4 @@
-package de.fishdevelopments.fishware.system.manager
+package de.fishdevelopments.fishware.manager
 
 abstract class ClassInstanceManager<T : Any> {
   val instances: MutableMap<Class<out T>, T> = HashMap()
