@@ -8,8 +8,10 @@
   ],
   "client": [
     "HeldItemRendererMixin",
+    "InGameHudMixin",
     "KeyboardMixin",
-    "MinecraftClientMixin"
+    "MinecraftClientMixin",
+    "WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
