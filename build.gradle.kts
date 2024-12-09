@@ -25,6 +25,8 @@ repositories {
     name = ("impactdevelopment-repo")
     url = uri("https://impactdevelopment.github.io/maven/")
   }
+  mavenCentral()
+  maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
@@ -43,6 +45,15 @@ dependencies {
   implementation("io.github.spair:imgui-java-natives-windows:1.86.12")
   implementation("io.github.spair:imgui-java-natives-linux:1.86.12")
   implementation("io.github.spair:imgui-java-natives-macos:1.86.12")
+
+  implementation(platform("org.lwjgl:lwjgl-bom:3.3.4"))
+
+  implementation("org.lwjgl", "lwjgl")
+  implementation("org.lwjgl", "lwjgl-nanovg")
+  runtimeOnly("org.lwjgl", "lwjgl", classifier = "natives-windows")
+  runtimeOnly("org.lwjgl", "lwjgl-nanovg", classifier = "natives-windows")
+
+  implementation("com.github.surge541:NVGU:1.2")
 }
 
 tasks {
