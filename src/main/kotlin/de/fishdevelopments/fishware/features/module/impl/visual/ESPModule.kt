@@ -153,35 +153,37 @@ class ESPModule : Module(ModuleCategory.VISUAL, "ESP", "Makes entities visible b
 
   @Subscribe
   fun onRender2DEvent(render2DEvent: Render2DEvent) {
-    for ((entity, pair) in this.hashMap.entries) {
-      if (pair.second) {
-        val rectangle = pair.first
+    if (this.ddSetting.value) {
+      for ((entity, pair) in this.hashMap.entries) {
+        if (pair.second) {
+          val rectangle = pair.first
 
-        NanoVGRenderer.render {
-          if (this.boxSetting.value) {
-            NanoVGRenderer.NVGU.roundedRectangleBorder(
-              rectangle.x.toFloat() * MC.window.scaleFactor.toFloat(),
-              rectangle.y.toFloat() * MC.window.scaleFactor.toFloat(),
-              (rectangle.z - rectangle.x).toFloat() * MC.window.scaleFactor.toFloat(),
-              (rectangle.w - rectangle.y).toFloat() * MC.window.scaleFactor.toFloat(),
-              this.boxRadiusSetting.value.toFloat(),
-              this.boxThicknessSetting.value.toFloat(),
-              this.boxColorSetting.value,
-              this.boxBorderMode.value,
-            )
-          }
+          NanoVGRenderer.render {
+            if (this.boxSetting.value) {
+              NanoVGRenderer.NVGU.roundedRectangleBorder(
+                rectangle.x.toFloat() * MC.window.scaleFactor.toFloat(),
+                rectangle.y.toFloat() * MC.window.scaleFactor.toFloat(),
+                (rectangle.z - rectangle.x).toFloat() * MC.window.scaleFactor.toFloat(),
+                (rectangle.w - rectangle.y).toFloat() * MC.window.scaleFactor.toFloat(),
+                this.boxRadiusSetting.value.toFloat(),
+                this.boxThicknessSetting.value.toFloat(),
+                this.boxColorSetting.value,
+                this.boxBorderMode.value,
+              )
+            }
 
-          if (this.nametagsSetting.value) {
-            NanoVGRenderer.NVGU.text(
-              entity.displayName!!.string,
-              (rectangle.x.toFloat() + (rectangle.z - rectangle.x).toFloat() / 2f) *
-                MC.window.scaleFactor.toFloat(),
-              rectangle.y.toFloat() * MC.window.scaleFactor.toFloat(),
-              this.nametagsColorSetting.value,
-              this.nametagsFontSetting.value.identifier,
-              this.nametagsFontSizeSetting.value,
-              Alignment.CENTER_BOTTOM,
-            )
+            if (this.nametagsSetting.value) {
+              NanoVGRenderer.NVGU.text(
+                entity.displayName!!.string,
+                (rectangle.x.toFloat() + (rectangle.z - rectangle.x).toFloat() / 2f) *
+                  MC.window.scaleFactor.toFloat(),
+                rectangle.y.toFloat() * MC.window.scaleFactor.toFloat(),
+                this.nametagsColorSetting.value,
+                this.nametagsFontSetting.value.identifier,
+                this.nametagsFontSizeSetting.value,
+                Alignment.CENTER_BOTTOM,
+              )
+            }
           }
         }
       }
