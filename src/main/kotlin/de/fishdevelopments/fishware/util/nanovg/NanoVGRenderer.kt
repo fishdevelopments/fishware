@@ -9,6 +9,24 @@ object NanoVGRenderer {
     NVGU()
       .create()
       .createFont(
+        Font.GREYCLIFF_CF_DEMIBOLD.identifier,
+        NanoVGRenderer.javaClass.getResourceAsStream(
+          "/assets/fishware/fonts/GreycliffCF-DemiBold.ttf"
+        ),
+      )
+      .createFont(
+        Font.GREYCLIFF_CF_HEAVY.identifier,
+        NanoVGRenderer.javaClass.getResourceAsStream("/assets/fishware/fonts/GreycliffCF-Heavy.ttf"),
+      )
+      .createFont(
+        Font.MINECRAFT.identifier,
+        NanoVGRenderer.javaClass.getResourceAsStream("/assets/fishware/fonts/Minecraft.ttf"),
+      )
+      .createFont(
+        Font.PROGGYCLEAN.identifier,
+        NanoVGRenderer.javaClass.getResourceAsStream("/assets/fishware/fonts/ProggyClean.ttf"),
+      )
+      .createFont(
         Font.UBUNTUMONO_BOLD.identifier,
         NanoVGRenderer.javaClass.getResourceAsStream("/assets/fishware/fonts/UbuntuMono-Bold.ttf"),
       )
@@ -17,10 +35,6 @@ object NanoVGRenderer {
         NanoVGRenderer.javaClass.getResourceAsStream(
           "/assets/fishware/fonts/UbuntuMono-Regular.ttf"
         ),
-      )
-      .createFont(
-        Font.PROGGYCLEAN.identifier,
-        NanoVGRenderer.javaClass.getResourceAsStream("/assets/fishware/fonts/ProggyClean.ttf"),
       )
       .createFont(
         Font.VOLTE_BOLD.identifier,
