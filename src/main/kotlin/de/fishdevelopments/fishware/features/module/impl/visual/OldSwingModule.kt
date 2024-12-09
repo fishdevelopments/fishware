@@ -5,7 +5,7 @@ import de.fishdevelopments.fishware.features.module.ModuleCategory
 import net.minecraft.item.ItemStack
 
 class OldSwingModule :
-  Module(ModuleCategory.VISUAL, "Old swing", "Hides the equip progress animation.") {
+  Module(ModuleCategory.VISUAL, "OldSwing", "Hides the equip progress animation.") {
 
   fun canEquipBeIgnored(oldItem: ItemStack?, newItem: ItemStack?): Boolean {
     if (oldItem == null || newItem == null) {
